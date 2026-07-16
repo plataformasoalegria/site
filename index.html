@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Iago Camargo — Especialista em Emagrecimento Feminino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #CC0000; --red-dark: #A30000;
+    --black: #0E0E0E; --card: #161616; --border: #252525;
+    --white: #FFFFFF; --muted: #888888; --light: #CCCCCC;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; background: rgba(14,14,14,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; letter-spacing: 0.04em; color: var(--white); text-transform: uppercase; }
+  .nav-logo span { color: var(--red); }
+  .nav-cta { background: var(--red); color: var(--white); border: none; padding: 10px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 40px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(204,0,0,0.06) 100%); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); }
+  .hero-headline { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(48px, 6vw, 80px); font-weight: 900; line-height: 1.0; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .hero-headline .accent { color: var(--red); }
+  .hero-sub { font-size: 17px; color: var(--light); line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--red); color: var(--white); border: none; padding: 16px 32px; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--white); border: 1px solid var(--border); padding: 16px 32px; font-weight: 600; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--muted); }
+  .hero-right { display: flex; flex-direction: column; gap: 20px; }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .hero-stat { background: var(--card); border: 1px solid var(--border); padding: 28px 24px; }
+  .hero-stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 6px; }
+  .hero-stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+  .hero-badge { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--red); padding: 20px 24px; font-size: 14px; color: var(--light); line-height: 1.6; }
+  .hero-badge strong { color: var(--white); }
+
+  /* SECTIONS */
+  .section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-full { padding: 100px 40px; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-full-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 24px; }
+  .section-title .accent { color: var(--red); }
+  .section-body { font-size: 16px; color: var(--light); line-height: 1.8; max-width: 600px; }
+
+  /* DOR */
+  .dor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .dor-item { background: var(--black); padding: 36px 28px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .dor-item:hover { border-color: var(--red); }
+  .dor-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .dor-item:hover::before { transform: scaleX(1); }
+  .dor-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .dor-text { font-size: 15px; color: var(--light); line-height: 1.7; }
+  .dor-text strong { display: block; color: var(--white); font-size: 16px; margin-bottom: 8px; font-weight: 700; }
+
+  /* MÉTODO */
+  .metodo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .metodo-steps { display: flex; flex-direction: column; gap: 0; }
+  .metodo-step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .metodo-step:first-child { padding-top: 0; }
+  .metodo-step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 900; color: var(--red); line-height: 1; min-width: 40px; margin-top: 2px; }
+  .step-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--white); }
+  .step-content p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .metodo-right { position: sticky; top: 100px; }
+  .metodo-card { background: var(--card); border: 1px solid var(--border); padding: 40px; }
+  .metodo-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
+  .metodo-card-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .metodo-check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+  .metodo-check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--light); line-height: 1.5; }
+  .metodo-check-list li::before { content: '✓'; color: var(--red); font-weight: 900; font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+
+  /* GALERIA - PROVA SOCIAL */
+  .galeria-intro { margin-bottom: 48px; }
+  .galeria-grid {
+    columns: 4;
+    column-gap: 8px;
+    margin-top: 48px;
+  }
+  .galeria-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .galeria-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+    filter: brightness(0.9);
+  }
+  .galeria-item:hover img { transform: scale(1.04); filter: brightness(1); }
+  .galeria-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(204,0,0,0.3) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .galeria-item:hover::after { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .lightbox-close { position: absolute; top: 20px; right: 24px; font-size: 32px; color: var(--white); cursor: pointer; background: none; border: none; line-height: 1; }
+  .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(204,0,0,0.8); color: white; border: none; font-size: 24px; padding: 16px 20px; cursor: pointer; transition: background 0.2s; }
+  .lightbox-prev:hover, .lightbox-next:hover { background: var(--red); }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+  .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--muted); letter-spacing: 0.08em; }
+
+  /* OFERTA */
+  .oferta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 60px; }
+  .oferta-card { background: var(--card); border: 1px solid var(--border); padding: 48px 40px; position: relative; overflow: hidden; }
+  .oferta-card.featured { border-color: var(--red); }
+  .oferta-card.featured::before { content: 'MAIS POPULAR'; position: absolute; top: 20px; right: -30px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 900; letter-spacing: 0.12em; padding: 6px 40px; transform: rotate(45deg); }
+  .oferta-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .oferta-name { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
+  .oferta-desc { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+  .oferta-price-from { font-size: 12px; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+  .oferta-price { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; color: var(--white); line-height: 1; margin-bottom: 6px; }
+  .oferta-price span { font-size: 20px; color: var(--muted); font-weight: 400; }
+  .oferta-parcel { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .oferta-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .oferta-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .oferta-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--light); line-height: 1.5; }
+  .oferta-list li::before { content: '✓'; color: var(--red); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+  /* CTA FINAL */
+  .cta-final { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; }
+  .cta-final::before { content: 'MUSA'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Barlow Condensed', sans-serif; font-size: 400px; font-weight: 900; color: rgba(204,0,0,0.04); pointer-events: none; white-space: nowrap; letter-spacing: -0.02em; }
+  .cta-final-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+  .cta-final-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(40px, 5vw, 64px); font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 20px; }
+  .cta-final-title .accent { color: var(--red); }
+  .cta-final-sub { font-size: 16px; color: var(--muted); margin-bottom: 40px; line-height: 1.7; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; text-transform: uppercase; color: var(--white); }
+  .footer-logo span { color: var(--red); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 70px 20px; }
+    .section-full { padding: 70px 20px; }
+    .dor-grid { grid-template-columns: 1fr; }
+    .metodo-layout { grid-template-columns: 1fr; gap: 48px; }
+    .metodo-right { position: static; }
+    .galeria-grid { columns: 2; }
+    .oferta-grid { grid-template-columns: 1fr; }
+    .cta-final { padding: 80px 20px; }
+    .cta-final::before { font-size: 120px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .lightbox-prev { left: 4px; padding: 12px 14px; }
+    .lightbox-next { right: 4px; padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Iago <span>Camargo</span></div>
+  <a href="https://wa.me/5519993742889" class="nav-cta" target="_blank">Falar com Iago</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Especialista em Emagrecimento Feminino</div>
+      <h1 class="hero-headline">
+        De mulher que<br/>
+        usa o que <span class="accent">cabe,</span><br/>
+        pra Musa.
+      </h1>
+      <p class="hero-sub">
+        O Método MFR foi criado pra mulher real — com rotina real, corpo real e objetivo real. 
+        Treino e nutrição trabalhando juntos do jeito certo, pra você parar de adivinhar e começar a transformar.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5519993742889" class="btn-primary" target="_blank">Quero começar agora</a>
+        <a href="#metodo" class="btn-secondary">Conhecer o método</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-number">12</div>
+          <div class="hero-stat-label">Semanas de transformação</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">6kg</div>
+          <div class="hero-stat-label">De gordura eliminada</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">100%</div>
+          <div class="hero-stat-label">Método individualizado</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">MFR</div>
+          <div class="hero-stat-label">Musa Fit Real</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <strong>Personal + Nutricionista trabalhando juntos.</strong> Treino e alimentação individualizados 
+        pra você — não pra um corpo genérico da internet.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label reveal">O problema</div>
+    <h2 class="section-title reveal">Você se identifica <span class="accent">com alguma</span><br/>dessas situações?</h2>
+    <p class="section-body reveal">Não é falta de esforço. É falta do método certo pro seu corpo e pra sua vida.</p>
+    <div class="dor-grid">
+      <div class="dor-item reveal">
+        <span class="dor-icon">👗</span>
+        <div class="dor-text"><strong>O guarda-roupa te limita</strong>Você compra a roupa que cabe, não a que você quer. Toda manhã é uma negociação com o espelho.</div>
+      </div>
+      <div class="dor-item reveal">
+        <span class="dor-icon">⚖️</span>
+        <div class="dor-text"><strong>A balança tá parada</strong>Você treina, corta comida, e o número não muda. Ou muda e volta. O ciclo não para.</div>
+      </div>
+      <div class="dor-item reveal">
+        <span class="dor-icon">📱</span>
+        <div class="dor-text"><strong>Fotos que nunca são postadas</strong>Você desvia o olhar quando aparece numa foto. Não porque é frescura — porque dói.</div>
+      </div>
+      <div class="dor-item reveal">
+        <span class="dor-icon">🔁</span>
+        <div class="dor-text"><strong>Tentou de tudo e voltou</strong>Dieta, academia, programa, desistiu, voltou. O problema nunca foi falta de vontade.</div>
+      </div>
+      <div class="dor-item reveal">
+        <span class="dor-icon">😓</span>
+        <div class="dor-text"><strong>Treina demais e evolui pouco</strong>Todo dia na academia, se matando — e o corpo não responde. O esforço não tá errado. O método está.</div>
+      </div>
+      <div class="dor-item reveal">
+        <span class="dor-icon">🔍</span>
+        <div class="dor-text"><strong>Comparação que não para</strong>Você se compara com quem nem sabe que você existe. E sai perdendo toda vez.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MÉTODO -->
+<section class="section" id="metodo">
+  <div class="metodo-layout">
+    <div>
+      <div class="section-label reveal">O método</div>
+      <h2 class="section-title reveal">Como o <span class="accent">MFR</span><br/>funciona</h2>
+      <p class="section-body reveal" style="margin-bottom:48px">Musa Fit Real não é mais um programa de treino. É uma metodologia criada pra transformar o corpo da mulher real — com a rotina dela, o tempo dela e o objetivo dela.</p>
+      <div class="metodo-steps">
+        <div class="metodo-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-content"><h4>Avaliação completa</h4><p>Anamnese, avaliação física e postural. A gente entende o seu ponto de partida antes de montar qualquer protocolo.</p></div>
+        </div>
+        <div class="metodo-step reveal">
+          <div class="step-num">02</div>
+          <div class="step-content"><h4>Treino individualizado</h4><p>Protocolo de força montado especificamente pro seu corpo, objetivo e disponibilidade. Sem treino genérico da internet.</p></div>
+        </div>
+        <div class="metodo-step reveal">
+          <div class="step-num">03</div>
+          <div class="step-content"><h4>Plano alimentar com nutricionista</h4><p>A nossa nutricionista monta seu plano alimentar alinhado ao treino. Os dois trabalhando juntos — não separados.</p></div>
+        </div>
+        <div class="metodo-step reveal">
+          <div class="step-num">04</div>
+          <div class="step-content"><h4>Acompanhamento contínuo</h4><p>Ajustes semanais, grupo de suporte, metas e evolução acompanhada. Você não fica sozinha no processo.</p></div>
+        </div>
+        <div class="metodo-step reveal">
+          <div class="step-num">05</div>
+          <div class="step-content"><h4>Resultado real, medido de verdade</h4><p>A gente não mede só pela balança. Medidas, composição, como a roupa tá ficando — o que mostra o que realmente mudou.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="metodo-right reveal">
+      <div class="metodo-card">
+        <div class="metodo-card-title">Consultoria<br/>MusaFit Real</div>
+        <div class="metodo-card-sub">12 semanas de transformação completa</div>
+        <ul class="metodo-check-list">
+          <li>Treino personalizado por mim</li>
+          <li>Plano alimentar individualizado pela nutricionista</li>
+          <li>Avaliação física e postural</li>
+          <li>Ajustes semanais conforme evolução</li>
+          <li>Grupo exclusivo de suporte</li>
+          <li>Aplicativo exclusivo com seus treinos</li>
+          <li>Cardio orientado pro seu objetivo</li>
+          <li>Metas semanais e sistema de acompanhamento</li>
+        </ul>
+        <a href="https://wa.me/5519993742889" class="btn-primary" target="_blank" style="width:100%;text-align:center;display:block">Quero saber mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL — GALERIA DE FOTOS -->
+<div class="section-full" id="resultados">
+  <div class="section-full-inner">
+    <div class="section-label reveal">Resultados reais</div>
+    <h2 class="section-title reveal">Mulheres reais.<br/><span class="accent">Transformações</span> reais.</h2>
+    <p class="section-body reveal galeria-intro">Não é atleta, não é influenciadora. É mulher com rotina, com trabalho, com família — que decidiu parar de esperar o momento certo e começou.</p>
+    <div class="galeria-grid" id="galeriaGrid">
+      <div class="galeria-item reveal" data-index="0"><img src="images/IMG_3257.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="1"><img src="images/IMG_3258.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="2"><img src="images/IMG_3259.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="3"><img src="images/IMG_3260.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="4"><img src="images/IMG_3262.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="5"><img src="images/IMG_3264.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="6"><img src="images/IMG_3273.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="7"><img src="images/IMG_3280.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="8"><img src="images/IMG_3282.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="9"><img src="images/IMG_3285.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="10"><img src="images/IMG_3286.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="11"><img src="images/IMG_3290.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="12"><img src="images/IMG_3292.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="13"><img src="images/IMG_3295.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="14"><img src="images/IMG_3304.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="15"><img src="images/IMG_3305.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="16"><img src="images/IMG_3308.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="17"><img src="images/IMG_3309.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="18"><img src="images/IMG_3312.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="19"><img src="images/IMG_3313.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="20"><img src="images/IMG_3317.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="21"><img src="images/IMG_3319.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="22"><img src="images/IMG_3320.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="23"><img src="images/IMG_3324.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="24"><img src="images/IMG_3328.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="25"><img src="images/IMG_3329.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="26"><img src="images/IMG_3332.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="27"><img src="images/IMG_3335.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="28"><img src="images/IMG_3342.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="29"><img src="images/IMG_3351.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="30"><img src="images/IMG_3352.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="31"><img src="images/IMG_3360.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="32"><img src="images/IMG_3361.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="33"><img src="images/IMG_3363.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="34"><img src="images/IMG_3370.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="35"><img src="images/IMG_3377.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="36"><img src="images/IMG_3378.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="37"><img src="images/IMG_3379.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="38"><img src="images/IMG_3382.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="39"><img src="images/IMG_3383.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="40"><img src="images/IMG_3397.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="41"><img src="images/IMG_3399.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="42"><img src="images/IMG_3400.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="43"><img src="images/IMG_3401.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="44"><img src="images/IMG_3403.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="45"><img src="images/IMG_3404.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="46"><img src="images/IMG_3406.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="47"><img src="images/IMG_3407.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+      <div class="galeria-item reveal" data-index="48"><img src="images/IMG_3410.jpg" alt="Resultado aluna MFR" loading="lazy"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-prev" id="lbPrev">‹</button>
+  <img src="" alt="" id="lbImg"/>
+  <button class="lightbox-next" id="lbNext">›</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<!-- OFERTA -->
+<section class="section" id="oferta">
+  <div class="section-label reveal">Escolha seu caminho</div>
+  <h2 class="section-title reveal">Qual o seu <span class="accent">próximo</span> passo?</h2>
+  <p class="section-body reveal">Dois caminhos. Os dois com o mesmo método. A diferença é o nível de acompanhamento.</p>
+  <div class="oferta-grid">
+    <div class="oferta-card reveal">
+      <div class="oferta-tag">Porta de entrada</div>
+      <div class="oferta-name">Kit MFR</div>
+      <div class="oferta-desc">Planilha de treino + planos alimentares prontos. O protocolo MFR sem acompanhamento individual — pra começar agora.</div>
+      <div class="oferta-price-from">De R$ 147,00</div>
+      <div class="oferta-price">R$<span> </span>67</div>
+      <div class="oferta-parcel">pagamento único</div>
+      <hr class="oferta-divider"/>
+      <ul class="oferta-list">
+        <li>Planilha de treino do protocolo MFR</li>
+        <li>Planos alimentares prontos por objetivo</li>
+        <li>Guia de substituições alimentares</li>
+        <li>Protocolo de progressão semana a semana</li>
+        <li>Acesso imediato após pagamento</li>
+      </ul>
+      <a href="https://wa.me/5519993742889" class="btn-secondary" target="_blank" style="width:100%;text-align:center;display:block">Quero o Kit MFR</a>
+    </div>
+    <div class="oferta-card featured reveal">
+      <div class="oferta-tag">Consultoria completa</div>
+      <div class="oferta-name">MusaFit Real</div>
+      <div class="oferta-desc">12 semanas com acompanhamento individualizado — treino, nutrição, ajustes semanais e suporte contínuo.</div>
+      <div class="oferta-price-now" style="font-size:12px;color:var(--muted);margin-bottom:4px">A partir de</div>
+      <div class="oferta-price">R$<span> </span>297</div>
+      <div class="oferta-parcel">ou 3x de R$ 99,00</div>
+      <hr class="oferta-divider"/>
+      <ul class="oferta-list">
+        <li>Treino 100% individualizado</li>
+        <li>Plano alimentar com nutricionista</li>
+        <li>Avaliação física e postural completa</li>
+        <li>Ajustes semanais conforme evolução</li>
+        <li>Grupo exclusivo de suporte</li>
+        <li>Aplicativo exclusivo com seus treinos</li>
+        <li>Cardio orientado pro seu objetivo</li>
+      </ul>
+      <a href="https://wa.me/5519993742889" class="btn-primary" target="_blank" style="width:100%;text-align:center;display:block">Quero a consultoria</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <div class="section-label reveal" style="justify-content:center">Agora é com você</div>
+    <h2 class="cta-final-title reveal">Você não precisa<br/>estar <span class="accent">pronta.</span><br/>Precisa começar.</h2>
+    <p class="cta-final-sub reveal">A dor de continuar como está é maior do que o desconforto de mudar. Você já sabe disso. A diferença agora é fazer algo com isso.</p>
+    <div class="reveal">
+      <a href="https://wa.me/5519993742889" class="btn-primary" target="_blank" style="font-size:15px;padding:18px 40px">Falar com Iago no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Iago <span>Camargo</span></div>
+  <div class="footer-links">
+    <a href="https://instagram.com/personal.iagocamargo" target="_blank">Instagram</a>
+    <a href="https://wa.me/5519993742889" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Lightbox
+  const images = Array.from(document.querySelectorAll('.galeria-item img')).map(img => img.src);
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+
+  function openLightbox(index) {
+    current = index;
+    lbImg.src = images[current];
+    lbCounter.textContent = (current + 1) + ' / ' + images.length;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showPrev() {
+    current = (current - 1 + images.length) % images.length;
+    lbImg.src = images[current];
+    lbCounter.textContent = (current + 1) + ' / ' + images.length;
+  }
+
+  function showNext() {
+    current = (current + 1) % images.length;
+    lbImg.src = images[current];
+    lbCounter.textContent = (current + 1) + ' / ' + images.length;
+  }
+
+  document.querySelectorAll('.galeria-item').forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', showPrev);
+  document.getElementById('lbNext').addEventListener('click', showNext);
+
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+</script>
+</body>
+</html>
